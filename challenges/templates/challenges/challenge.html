@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    challenge for {{month_name|capfirst}}
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'challenges/challenge.css' %}">
+<link rel="stylesheet" href="{% static 'challenges/includes/header.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include "./includes/header.html" %}
+<!--this html file inside this includes can be accessed by only using the relative path from where we are-->
+<!--<h2>The challenge for {{month_name|capfirst}} is {{challenge_text}}</h2>-->
+<!--this above injection feature is known as interpolation as it looks exactly like python string interpolation syntax-->
+{% if challenge_text is None %}
+<h2>sorry there is no challenge for {{month_name}} yet</h2>
+{% else %}
+<h2>The challenge for {{month_name}} is {{challenge_text}}</h2>
+{% endif %}
+{% endblock %}
+
